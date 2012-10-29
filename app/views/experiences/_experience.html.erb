@@ -1,0 +1,8 @@
+<ul>
+<li>
+   <b><%= experience.customer %></b> - <%= experience.location %> | Project cost ( <%= experience.project_cost %> )
+   <hr/>
+<%= experience.project_description %><br/>
+ <%= experience.date %>    | <u>project completion within:</u> <%= experience.duration %> | <%= link_to 'Remove', [experience.company, experience], :confirm => 'Really remove experience?', :method => :delete %>
+</li>
+</ul>

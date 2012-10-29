@@ -1,0 +1,103 @@
+<%= nested_form_for(@company) do |f| %>
+  <% if @company.errors.any? %>
+    <div id="error_explanation">
+      <p class="error"><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</p>
+
+      <ul>
+      <% @company.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+  <%= f.label "Company Name *" %><br />
+    <%= f.text_field :org_name %>
+  </div>
+<div class="field">
+<%= f.label "Categories" %><br />
+<% for category in Category.all %>
+<%= check_box_tag 'company[category_ids][]', category.id,
+@company.category_ids.include?(category.id), :id => dom_id(category) %>
+<%= label_tag dom_id(category), category.name, :class => "check_box_label" %>
+<% end %>
+</div>
+
+
+   <div class="field">
+    <%= f.label "have ISA license? *" %><br />
+    <%= f.text_field :isa_license %>
+  </div>
+  <div class="field">
+    <%= f.label :stablished_year%><br />
+    <%= f.date_select :stablished_year %>
+  </div>
+  <div class="field">
+    <%= f.label :business_size %><br />
+    <%= f.text_field :business_size %>
+  </div>
+  <div class="field">
+    <%= f.label :service_description %><br />
+    <%= f.text_area :service_description %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_area :address %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :website %><br />
+    <%= f.text_field :website %>
+  </div>
+  <br/><br/>
+  <hr/>
+  <% if logged_in? %>
+<div class="field">
+<%= f.fields_for :partners do |partner_form| %>
+  <div class="field">
+    <%= partner_form.label "Partner's Name" %> <%= partner_form.text_field :name %>
+  </div>
+  <div class="field">
+	  <%= partner_form.label "Partner's Info" %> <%= partner_form.text_area :info, rows:2, cols:30 %>
+  </div>
+  <%= partner_form.link_to_remove "Remove this partner" %>
+<% end %>
+<br/><br/>
+<p><%= f.link_to_add "Add a partner", :partners %></p>
+</div>
+
+<div class="field">
+<%= f.fields_for :experiences do |experience_form| %>
+   <div class="field">
+    <%= experience_form.label :customer %> <%= experience_form.text_field :customer %>
+  </div>
+  <div class="field">
+    <%= experience_form.label :location %> <%= experience_form.text_field :location %>
+  </div>
+  <div class="field">
+    <%= experience_form.label :date %> <%= experience_form.date_select :date %>
+  </div>
+  <div class="field">
+    <%= experience_form.label :duration %> <%= experience_form.text_field :duration %>
+  </div>
+  <div class="field">
+    <%= experience_form.label :project_cost %> <%= experience_form.text_field :project_cost %>
+  </div>
+  <div class="field">
+    <%= experience_form.label :project_description %> <%= experience_form.text_area :project_description %>
+  </div>
+  <%= experience_form.link_to_remove "Remove this experience" %>
+<% end %>
+<br/><br/>
+<p><%= f.link_to_add "Add an experience", :experiences %></p>
+</div>
+
+<% end %>
+ <div class="actions">
+	<%= f.submit %>
+  </div>
+<% end %>

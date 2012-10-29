@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  org_name: MyString
+  isa_license: MyString
+  stablished_year: 2012-02-23
+  business_size: MyString
+  service_description: MyText
+  address: MyText
+  email: MyString
+  website: MyString
+
+two:
+  org_name: MyString
+  isa_license: MyString
+  stablished_year: 2012-02-23
+  business_size: MyString
+  service_description: MyText
+  address: MyText
+  email: MyString
+  website: MyString

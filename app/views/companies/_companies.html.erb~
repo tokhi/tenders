@@ -1,0 +1,18 @@
+<ul>
+<% @companies.each do |company| %>
+<tbody>  
+<tr>
+    <td><%= link_to company.org_name, company %></td>
+    <td><%= company.stablished_year %></td>
+    <td><%= company.business_size %></td>
+    <td><%= company.service_description[0..29] %></td>
+<% if logged_in? %>
+<% if current_user.role == "admin" %>
+
+<td><%= link_to 'Destroy', company, confirm: 'Are you sure?', method: :delete %></td>
+<% end %>
+<% end %>  
+</tr>
+<% end %>
+</ul>
+<%= will_paginate @companies %>

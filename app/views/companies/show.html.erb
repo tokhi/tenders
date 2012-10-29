@@ -1,0 +1,46 @@
+<p id="success"><%= notice %></p>
+
+<table id="box-table-a" summary="companies table">
+<thead>
+<tr>
+   <th scope="col">Company</th>
+   <th scope="col"> IsaLicense</th>
+    <th scope="col">StablishedYr</th>
+    <th scope="col">BusSize</th>
+  </tr>
+<tr>
+</thead>
+    <td><%= @company.org_name %></td>
+    <td> <%= @company.isa_license %></td>
+    <td><%= @company.stablished_year %></td>
+    <td><%= @company.business_size %></td>
+  </tr>
+<tr>
+    <th>Service Description</th>
+<td colspan="3"><%= @company.service_description %></td>
+</tr>
+<tr>
+<th>company website</th><th>Address</th>
+<th></th><th></th>
+</tr>
+<tr>
+<td><%= link_to @company.website, @company %></td>
+<td colspan="3"><%= @company.address %></td>
+</tr>
+<tr>
+<th>Experiences</th><th></th><th></th><th></th>
+</tr>
+<tr>
+<td colspan="4"><%= render @company.experiences %>
+</tr>
+<tr>
+<th>Partners</th><th></th><th></th><th>Company's Email</th>
+</tr>
+<tr>
+<td colspan="3"><%= render @company.partners %></td>
+<td><%= @company.email %></td> 
+</tr>
+</table>
+<br/><br/>
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>

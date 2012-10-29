@@ -1,0 +1,12 @@
+
+
+<link rel="stylesheet" <link  href="http://www.mydomain.com/jquery-ui-1/development-bundle/themes/ui-lightness/jquery.ui.all.css" rel="stylesheet" type="text/javascript"/>';
+    // --> jQuery javascript
+<script jquery-min.js
+<script jquery-ui.min.js>
+<script src="http://www.mydomain.com/jquery-ui-1/development-bundle/jquery-1.5.1.js"></script>
+
+<script> $(document).ready(function(){$("#datepicker").datepicker();});</script>
+</head>
+
+<form> <input id="datepicker"/></form>

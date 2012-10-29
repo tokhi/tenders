@@ -1,0 +1,10 @@
+<ul>
+<li>
+<b><%= partner.name %></b> | <%= link_to 'Remove', [partner.company, partner], :confirm => 'Really remove partner?', :method => :delete %>
+	<ul>
+	 <li>
+	  <%= partner.info %>
+	 </li>
+        </ul>
+</li>
+</ul>

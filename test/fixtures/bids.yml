@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  buyer: MyString
+  location: MyString
+  sector: MyString
+  description: MyString
+  opening_date: 2012-02-22 21:41:05
+  closing_date: 2012-02-22 21:41:05
+  name: MyString
+  email: MyString
+  phone: 1
+  addition_info: MyString
+  attachement: MyString
+
+two:
+  buyer: MyString
+  location: MyString
+  sector: MyString
+  description: MyString
+  opening_date: 2012-02-22 21:41:05
+  closing_date: 2012-02-22 21:41:05
+  name: MyString
+  email: MyString
+  phone: 1
+  addition_info: MyString
+  attachement: MyString

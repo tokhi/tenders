@@ -1,0 +1,30 @@
+<p id="success"><%= notice %></p>
+
+<table id="box-table-a" summary="companies table">
+
+<tr>
+   <th>Buyer</th>
+   <th> Location</th>
+    <th>Sector</th>
+  </tr>
+<tr><td><%= @bid.buyer %></td><td><%= @bid.location %></td><td><%= @bid.sector %></td></tr>
+
+<tr>
+<th colspan="3">Description of the Product/Services Required</th>
+</tr>
+<tr><td colspan="3"><%= @bid.description %></td></tr>
+<tr><th colspan="3"></th></tr>
+<tr><td colspan="2"><b>Opening Date</b>: </td><td><%= @bid.opening_date %></td></tr>
+<tr><td colspan="2"><b>Closing Date</b>: </td><td><%= @bid.closing_date %></td></tr>
+<tr><th colspan="3">Contact details</th></tr>
+<tr><td><%= @bid.name %></td><td><%= @bid.phone %></td><td><%= @bid.email %></td></tr>
+<tr><th> Additional Info </th><td colspan="2"></td></tr>
+<tr><td colspan="3"><%= @bid.addition_info %></td></tr>
+<tr><td colspan="3"><b>Attachment:</b></td></tr>
+<tr><td colspan="2"> <%= link_to 'Download attachment..', @bid.attachment.url %> </td>
+<td><%= link_to image_tag("download.gif"), @bid.attachment.url %></td>
+</tr>
+</table>
+
+<%= link_to 'Edit', edit_bid_path(@bid) %> |
+<%= link_to 'Back', bids_path %>

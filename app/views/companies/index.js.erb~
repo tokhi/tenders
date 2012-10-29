@@ -1,0 +1,2 @@
+$('#companies').html('<%= render partial: 'companies' %>');
+$.setAjaxPagination();

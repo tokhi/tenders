@@ -1,0 +1,25 @@
+
+<table id="hor-minimalist-b" summary="companies table">
+<tr>
+   <th scope="col">Buyer</th>
+   <th scope="col">Description</th>
+    <th scope="col">Location</th>
+    <th scope="col">Sector</th>
+    <th scope="col">Closing Date</th>
+  </tr>
+<% @bids.each do |bid| %>
+<tbody>
+<tr>
+    <td><%= link_to bid.buyer, bid %></td>
+    <td><%= bid.description %></td>
+    <td><%= bid.location %></td>
+    <td><%= bid.sector %></td>
+    <td><%= bid.closing_date %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Bid', new_bid_path %>

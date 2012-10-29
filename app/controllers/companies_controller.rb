@@ -1,0 +1,117 @@
+class CompaniesController < ApplicationController
+  before_filter :authenticate, :except => [:index, :show, :search]
+
+def search
+@companies = Company.search(params[:keyword])
+render :action => 'index'
+end
+
+
+  # GET /companies
+  # GET /companies.json
+  def index
+    #@companies = Company.all
+    @companies = Company.order("reg_date DESC").paginate(page: params[:page], per_page: 10)
+    #@posts = Post.where(:published => true).page(1).order('created_at DESC')
+    
+
+    respond_to do |format|
+      format.html # index.html.erb
+      #format.js
+      format.json { render json: @companies }
+    end
+  end
+
+  # GET /companies/1
+  # GET /companies/1.json
+  def show
+    @company = Company.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+	format.js
+#     format.js {@current_comp = @company}
+	 format.json { render json: @company }
+    end
+  end
+
+  # GET /companies/new
+  # GET /companies/new.json
+  def new
+    @company = Company.new
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @company }
+    end
+  end
+
+  # GET /companies/1/edit
+  def edit
+     if(current_user.role == "admin")
+         @company = Company.find(params[:id])
+     else
+       begin
+         @company = current_user.companies.find(params[:id])
+         rescue Exception => e
+	render :action => 'error'
+       end
+   end
+
+end
+
+          # POST /companies
+  # POST /companies.json
+  def create
+   if(current_user.role == "admin")
+      @company = Company.new(params[:company])
+   else
+      @company = current_user.companies.new(params[:company])
+   end
+   @company.reg_date = Time.now
+respond_to do |format|
+      if @company.save
+        format.html { redirect_to @company, notice: 'Company was successfully created.' }
+        format.json { render json: @company, status: :created, location: @company }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @company.errors, status: :unprocessable_entity }
+      end
+    end
+end
+  # PUT /companies/1
+  # PUT /companies/1.json
+  def update
+   if(current_user.role == "admin") 
+      @company = Company.find(params[:id])
+   else
+      @company = current_user.companies.find(params[:id]) 
+   end
+respond_to do |format|
+      if @company.update_attributes(params[:company])
+        format.html { redirect_to @company, notice: 'Company was successfully updated.' }
+        format.json { head :ok }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @company.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
+
+  # DELETE /companies/1
+  # DELETE /companies/1.json
+  def destroy
+  # @company = current_user.companies.find(params[:id])
+if(current_user.role == "admin") 
+   @company = Company.find(params[:id])
+   @company.destroy
+else
+   flash[:error] = "Permission denied !"
+      redirect_to companies_url
+end
+    respond_to do |format|
+      format.html { redirect_to companies_url }
+      format.json { head :ok }
+    end
+  end
+end

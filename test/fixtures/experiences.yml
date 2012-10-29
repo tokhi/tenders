@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  customer: MyString
+  location: MyString
+  date: 2012-02-23
+  duration: MyString
+  project_cost: MyString
+  project_description: MyText
+
+two:
+  customer: MyString
+  location: MyString
+  date: 2012-02-23
+  duration: MyString
+  project_cost: MyString
+  project_description: MyText

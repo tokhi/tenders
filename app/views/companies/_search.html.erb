@@ -1,0 +1,7 @@
+<%= form_tag search_companies_path, :method => :get do %>
+<p>
+Search
+<%= text_field_tag :keyword, params[:keyword] %>
+</p>
+<% end %>
+

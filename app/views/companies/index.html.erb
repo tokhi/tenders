@@ -1,0 +1,12 @@
+<%= content_tag(:p, notice, :class => 'success') if notice.present? %>
+<table id="hor-minimalist-b" summary="companies table">
+<tr>
+   <th scope="col">Company</th>
+    <th scope="col">Stablished.Y</th>
+    <th scope="col">Busines Size</th>
+    <th scope="col">Service Desription</th>
+  </tr>
+  <%= render partial: 'companies' %>
+
+<br />
+<%= link_to 'New Company', new_company_path %>
